@@ -1,3 +1,4 @@
+const Expense = require('./expense')
+const User = require('./user')
 
-
-module.exports = { };
+module.exports = { Expense, User };
