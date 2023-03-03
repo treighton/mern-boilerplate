@@ -14,12 +14,17 @@ function App() {
       <Router>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
           <Routes>
-            <Route 
+     {/* </Routes></Routes> <Route path=“/” element={<Layout />}> */}
+        {/* <Route index element={<Home />} /> */}
+        <Route 
               path="/" 
               element={<Home />} 
             />
-
-          </Routes>
+        <Route path=“about” element={<About />} />
+        <Route path=“projects” element={<Projects />} />
+        <Route path=“contact” element={<Contact />} />
+    </Routes>
+            
         </div>
       </Router>
     </ApolloProvider>

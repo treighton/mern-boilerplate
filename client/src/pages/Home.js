@@ -1,4 +1,4 @@
-import React from 'react';
+import { React } from 'react';
 
 const Home = () => {
   
@@ -6,6 +6,7 @@ const Home = () => {
     <div className="card bg-white card-rounded w-50">
       HOME
     </div>
+    
   );
 };
 
