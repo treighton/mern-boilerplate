@@ -1,1 +1,1 @@
-const { Schema, Type } = require('mangoos')
+const { Schema, Type } = require("mangoos");

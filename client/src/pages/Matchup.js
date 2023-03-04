@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_TECH } from '../utils/queries';
-import { CREATE_MATCHUP } from '../utils/mutations';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useMutation, useQuery } from "@apollo/client";
+import { QUERY_TECH } from "../utils/queries";
+import { CREATE_MATCHUP } from "../utils/mutations";
 
 const Matchup = () => {
   const { loading, data } = useQuery(QUERY_TECH);
@@ -10,8 +10,8 @@ const Matchup = () => {
   const techList = data?.tech || [];
 
   const [formData, setFormData] = useState({
-    tech1: 'JavaScript',
-    tech2: 'JavaScript',
+    tech1: "JavaScript",
+    tech2: "JavaScript",
   });
   let navigate = useNavigate();
 
@@ -36,8 +36,8 @@ const Matchup = () => {
     }
 
     setFormData({
-      tech1: 'JavaScript',
-      tech2: 'JavaScript',
+      tech1: "JavaScript",
+      tech2: "JavaScript",
     });
   };
 

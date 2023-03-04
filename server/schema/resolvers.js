@@ -1,11 +1,6 @@
-
 const resolvers = {
-    Query: {
-       
-    },
-    Mutation: {
+  Query: {},
+  Mutation: {},
+};
 
-    },
-}
-
-module.exports = resolvers
+module.exports = resolvers;
