@@ -12,6 +12,7 @@ const userSchema = new Schema({
         required: true,
     },
 });
+
 // Make hash user password
 userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
