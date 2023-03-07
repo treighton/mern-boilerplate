@@ -1,0 +1,12 @@
+.nav {
+    display: flex;
+}
+.nav__ul {
+    list-style: none;
+    display: flex;
+    
+}
+
+.nav__li {
+    padding-right: 15px;
+}
