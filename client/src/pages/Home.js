@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Auth from '../utils/auth';
 
+// Need Importations
+
+// Need importations
+
+// Code incomplete 
 const Home = () => {
-  
-  return (
-    <div className="card bg-white card-rounded w-50">
-      HOME
-    </div>
-  );
-};
-
-export default Home;
+    const [loggedIn, setLoggedIn] = useState(Auth.loggedIn());
+    return loggedIn ?  {
+      fetchPolicy: "no-cache"
+    };
+}  

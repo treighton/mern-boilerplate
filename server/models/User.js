@@ -1,56 +1,31 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require('mangoose');
 const bcrypt = require('bcrypt');
-
-const dogSchema = require('./Dog');
-
-const userSchema = new Schema(
-  {
+// Make user Schema
+const userSchema = new Schema({
     username: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      match: [/.+@.+\..+/, 'Must use a valid email address'],
+        type: String,
+        required: true,
+        unique: true,
     },
     password: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
-    
-    savedDogs: [dogSchema],
-  },
- 
-  {
-    toJSON: {
-      virtuals: true,
-    },
-  }
-);
+});
 
-// hash user password
+// Make hash user password
 userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
-
-  next();
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bycrpt.hash(this.password, saltRounds);
+    }
+    next();
 });
-
-// custom method to compare and validate password for logging in
+// Make custom methode for campareing and validation password and logging in 
 userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+    return bcrypt.compare(password, this.password);
+
 };
+const User = model('User, userSchema');
 
-// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
-userSchema.virtual('dogCount').get(function () {
-  return this.savedDogs.length;
-});
-
-const User = model('User', userSchema);
-
-module.exports = User;
+model.exports = User;
