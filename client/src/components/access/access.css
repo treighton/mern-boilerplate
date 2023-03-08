@@ -5,6 +5,15 @@
     margin-right: auto;
     margin-top: 50px;
     background-color: blanchedalmond;
+    border-radius: 20px;
 }
 
-.container{}
+.accessbox2 {
+    width:300px !important;
+    height:400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background-color: blanchedalmond;
+    border-radius: 20px;
+}
