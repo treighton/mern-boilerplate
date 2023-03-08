@@ -1,4 +1,4 @@
-const { Schema, model } = require('mangoose');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 // Make user Schema
 const userSchema = new Schema({
@@ -26,6 +26,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 
 };
-const User = model('User, userSchema');
+const User = model('user', userSchema);
 
 model.exports = User;
