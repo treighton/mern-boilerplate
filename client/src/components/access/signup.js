@@ -3,7 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation} from "@apollo/client";
 //import signup mutation when available
 import Auth from '../../utils/auth';
-
+import "./access.css"
 const SignupForm = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
@@ -53,6 +53,7 @@ const SignupForm = () => {
   return (
     <>
       {/* This is needed for the validation functionality above */}
+      <div className="accessbox">
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
@@ -104,6 +105,7 @@ const SignupForm = () => {
           Submit
         </Button>
       </Form>
+      </div>
     </>
   );
 };

@@ -1,0 +1,10 @@
+.accessbox {
+    width:300px !important;
+    height:300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background-color: blanchedalmond;
+}
+
+.container{}

@@ -14,11 +14,11 @@ const Navbar = () => {
                 Contact
             </li>
             {!loggedIn && (
-            <Link to="/login"><li className='nav__li'>
+            <a href="/login"><li className='nav__li navlink'>
                 Log in
-            </li></Link>
+            </li></a>
             )}
-            <Link to="/signup"><li className='nav__li'>
+            <Link to="/signup"><li className='nav__li navlink'>
                 Sign up
             </li></Link>
         </ul>
