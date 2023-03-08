@@ -532,6 +532,7 @@ a:hover {
   margin-top: 0.625rem;
 }
 
+
 .mt-3 {
   margin-top: 1rem;
 }
@@ -1718,4 +1719,8 @@ label form [type="radio"] {
   .align-content-center-xl {
     align-content: center;
   }
+}
+
+.nav:hover {
+  background-color: brown;
 }

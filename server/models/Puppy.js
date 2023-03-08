@@ -1,6 +1,6 @@
 // Code needs to be imp-ed or src of the images that will apear on the page 
 
-const { Schema, Model, DataTypes } = require('mangoose');
+const { Schema, Model, DataTypes } = require('mongoose');
 // const sequelize = require('../config/connection');
 
 class Project extends Model {}

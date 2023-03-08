@@ -8,5 +8,11 @@
 }
 
 .nav__li {
+   
     padding-right: 15px;
 }
+
+.nav:hover {
+    background-color: brown;
+}
+
