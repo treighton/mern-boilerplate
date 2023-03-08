@@ -7,7 +7,7 @@ const typeDefs = gql`
     pasword: String!
   }
 
-  type puppy {
+  type Puppy {
     _id: ID!
     name: String
     userId : ID!
@@ -26,7 +26,6 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    AddPuppy(puppy: PuppyInput!): Puppy
   }
 `;
 module.exports = typeDefs;
