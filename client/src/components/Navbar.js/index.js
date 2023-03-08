@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 import Auth from '../../utils/auth';
 import './style.css'
 const Navbar = () => {
@@ -12,10 +13,14 @@ const Navbar = () => {
             <li className='nav__li'>
                 Contact
             </li>
-            {!loggedIn && (<li className='nav__li'>
+            {!loggedIn && (
+            <Link to="/login"><li className='nav__li'>
                 Log in
-            </li>)}
-            
+            </li></Link>
+            )}
+            <Link to="/signup"><li className='nav__li'>
+                Sign up
+            </li></Link>
         </ul>
     </nav>
   )
