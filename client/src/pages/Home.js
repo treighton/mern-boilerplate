@@ -14,7 +14,7 @@ const Home = () => {
     // }
     return !loggedIn && ( // remove bang (!) operator
       <>
-        <Header/>
+        <h1>Home</h1>
         
       </>
     )
