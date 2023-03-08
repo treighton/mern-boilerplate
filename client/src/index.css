@@ -1721,6 +1721,7 @@ label form [type="radio"] {
   }
 }
 
-.nav:hover {
-  background-color: brown;
+.nav__li:hover {
+  background-color: bisque;
+  ;
 }
