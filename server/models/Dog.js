@@ -11,7 +11,7 @@ const dogSchema = new Schema({
     type: String,
     required: true,
   },
-  // saved book id from GoogleBooks
+
   dogId: {
     type: String,
     required: true,
