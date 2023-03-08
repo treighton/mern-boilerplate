@@ -10,8 +10,6 @@ const typeDefs = gql`
   type puppy {
     _id: ID!
     name: String
-    amount: Int
-    interval:String
     userId : ID!
   }
 

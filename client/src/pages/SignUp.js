@@ -7,10 +7,17 @@ import {
   Card,
   CardColumns,
 } from "react-bootstrap";
-import React from "react";
-import Auth from "../../utils/auth";
+import React, { useState } from "react";
+import Auth from "../utils/auth";
 
-const Home = () => {
+const handleFormSubmit = (e) => {
+  console.log(e.target)
+}
+
+
+const Signup = () => {
+  const [ searchInput, setSearchInput ] = useState ()
+
   return (
     <>
       <Jumbotron fluid className="text-light bg-dark">
@@ -41,4 +48,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Signup;
