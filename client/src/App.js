@@ -21,11 +21,11 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="backgroundpic">
-          <Home/>
+          <Header/>
           <div className="container">
            
-        <Header/>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
+       
+        <div className="flex-column justify-center align-center min-100-vh">
           <Routes>
             <Route path="/signupform" element={<SignupForm />} />
             <Route path="/login" element={<Login />} />
