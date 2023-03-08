@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 import Auth from '../../utils/auth';
 import { useNavigate } from "react-router-dom";
 import './style.css'
@@ -21,16 +22,14 @@ const Navbar = () => {
             <li onClick={() => navigate('/about')} className='nav__li'>
                About
             </li>
-            { !loggedIn && (<li onClick={() => navigate('/signup')} className='nav__li'>
-               Signup
-            </li>)}
-            {!loggedIn && (<li onClick={() => navigate('/login')} className='nav__li'>
+            {!loggedIn && (
+            <a href="/login"><li className='nav__li navlink'>
                 Log in
-            </li>)}
-            { loggedIn && (<li onClick={() => handleLogout ()} className='nav__li'>
-               Logout
-            </li>)}
-            
+            </li></a>
+            )}
+            <Link to="/signup"><li className='nav__li navlink'>
+                Sign up
+            </li></Link>
         </ul>
     </nav>
   )
