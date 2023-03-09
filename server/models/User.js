@@ -14,23 +14,12 @@
 // });
 
 // // Make hash user password
-// userSchema.pre('save', async function (next) {
-//     if (this.isNew || this.isModified('password')) {
-//         const saltRounds = 10;
-//         this.password = await bycrpt.hash(this.password, saltRounds);
-//     }
-//     next();
-// });
-// // Make custom methode for campareing and validation password and logging in 
-// userSchema.methods.isCorrectPassword = async function (password) {
-//     return bcrypt.compare(password, this.password);
 
-// };
 // const User = model('user', userSchema);
 
 // model.exports = User;
 const mongoose = require('mongoose');
-
+const bcrypt = require("bcrypt");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -41,7 +30,7 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
+   // required: true,
     unique: true
   },
   password: {
@@ -49,7 +38,18 @@ const userSchema = new Schema({
     required: true
   }
 });
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+      const saltRounds = 10;
+      this.password = await bycrpt.hash(this.password, saltRounds);
+  }
+  next();
+});
+// Make custom methode for campareing and validation password and logging in 
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
 
+};
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
