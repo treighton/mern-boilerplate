@@ -1,6 +1,6 @@
 // Code needs to be imp-ed or src of the images that will apear on the page 
 
-const { Schema, Model, DataTypes } = require('mongoose');
+const { Schema, model, DataTypes } = require('mongoose');
 // const sequelize = require('../config/connection');
 
 const puppySchema = new Schema ({
@@ -19,5 +19,5 @@ const puppySchema = new Schema ({
 });
 
 
-const Puppu = model('Puppy')
-module.exports = Project;
+const Puppy = model('puppy',puppySchema)
+module.exports = Puppy;
