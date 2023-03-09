@@ -6,8 +6,8 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     // User log-in Mutation
     Mutation: {
-        addUser: async (parent, {username, password}) => {
-            const user = await User.create({ username, password});
+        addUser: async (parent, args) => {
+            const user = await User.create(args);
             const token = signToken(user);
             return { token, user };
         },

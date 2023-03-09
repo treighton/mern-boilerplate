@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import "./access.css"
 //import mutation when available
 const Login = () => {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+  const [userFormData, setUserFormData] = useState({ username: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const[login] = useMutation(LOGIN_USER)
 //create mutation variable when available
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -26,15 +28,8 @@ const Login = () => {
 
     try {
         //plug in login mutation when available
-    //   const response = await loginUser(userFormData);
-
-    //   if (!response.ok) {
-    //     throw new Error('something went wrong!');
-    //   }
-
-    //   const { token, user } = await response.json();
-    //   console.log(user);
-     // Auth.login(token);
+    const {data} = await login({variables: {...userFormData}})
+     Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
@@ -42,7 +37,7 @@ const Login = () => {
 
     setUserFormData({
       username: '',
-      email: '',
+     // email: '',
       password: '',
     });
   };
@@ -51,17 +46,17 @@ const Login = () => {
     <>
     <div className='accessbox'>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+        {/* <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
-        </Alert>
+        </Alert> */}
         <Form.Group style={{margin: "20px", padding: "15px"}}>
-          <Form.Label htmlFor='email'>Email</Form.Label>
+          <Form.Label htmlFor='username'>Username</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Your email'
-            name='email'
+            placeholder='Your username'
+            name='username'
             onChange={handleInputChange}
-            value={userFormData.email}
+            value={userFormData.username}
             required
           />
           <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
@@ -80,7 +75,7 @@ const Login = () => {
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(userFormData.email && userFormData.password)}
+          disabled={!(userFormData.username && userFormData.password)}
           type='submit'
           variant='success'>
           Submit

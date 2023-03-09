@@ -28,11 +28,11 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
-  email: {
-    type: String,
-   // required: true,
+   email: {
+     type: String,
+   required: true,
     unique: true
-  },
+   },
   password: {
     type: String,
     required: true
@@ -41,7 +41,7 @@ const userSchema = new Schema({
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
       const saltRounds = 10;
-      this.password = await bycrpt.hash(this.password, saltRounds);
+      this.password = await bcrypt.hash(this.password, saltRounds);
   }
   next();
 });

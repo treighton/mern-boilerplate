@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation} from "@apollo/client";
-//import signup mutation when available
+import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import "./access.css"
 const SignupForm = () => {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+  const [userFormData, setUserFormData] = useState({ username: '', email:'', password: '' });
   // set state for form validation
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 //insert signup mutation here when available
+const [addUser] = useMutation(ADD_USER)
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
@@ -19,7 +21,7 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+console.log (userFormData)
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -28,16 +30,8 @@ const SignupForm = () => {
     }
 
     try {
-        //plug in mutation when available
-    //   //const response = await createUser(userFormData);
-
-    //   if (!response.ok) {
-    //     throw new Error('something went wrong!');
-    //   }
-
-    //   const { token, user } = await response.json();
-    //   console.log(user);
-      //Auth.login(token);
+      const {data}=await addUser({variables:{...userFormData}})
+      Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
@@ -45,7 +39,7 @@ const SignupForm = () => {
 
     setUserFormData({
       username: '',
-      email: '',
+     email: '',
       password: '',
     });
   };
@@ -56,9 +50,9 @@ const SignupForm = () => {
       <div className="accessbox2">
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+        {/* <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your signup!
-        </Alert>
+        </Alert> */}
 
         <Form.Group style={{margin: "20px", padding: "15px"}} >
           <Form.Label htmlFor='username'>Username</Form.Label>
@@ -84,7 +78,7 @@ const SignupForm = () => {
             required
           />
           <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group> 
 
         <Form.Group style={{margin: "20px", padding: "15px"}} >
           <Form.Label htmlFor='password'>Password</Form.Label>
@@ -100,7 +94,7 @@ const SignupForm = () => {
         </Form.Group>
         <Button
         style={{marginRight: "auto", marginLeft: "auto"}}
-          disabled={!(userFormData.username && userFormData.email && userFormData.password)}
+          disabled={!(userFormData.username  && userFormData.password)}
           type='submit'
           variant='success'>
           Submit
